@@ -72,8 +72,9 @@ public class ElementBuilder {
     }
 
     private static void fixHtmlTags(Element src, boolean mergeTags) {
+        String exceptions = "country|Other|PowerPoint"
         if (pattern == null) {
-            pattern = Pattern.compile("<[A-Za-z0-9]+([\\s]+[A-Za-z\\-\\.]+=[\"|\'][^<&>]*[\"|\'])*[\\s]*/?>");
+            pattern = Pattern.compile("<(?!${exceptions})[A-Za-z0-9]+([\\s]+[A-Za-z\\-\\.]+=[\"|\'][^<&>]*[\"|\'])*[\\s]*/?>");
         }
         if (endPattern == null) {
             endPattern = Pattern.compile("</[A-Za-z0-9]+>");
